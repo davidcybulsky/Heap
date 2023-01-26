@@ -46,6 +46,17 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
     }
 
     private void heapUp() {
+        int child = heap.size() - 1;
+        int parent = (child - 1) / 2;
+        while (child > 0) {
+            if (heap.get(parent).compareTo(heap.get(child)) < 0) {
+                swap(parent, child);
+                child = parent;
+                parent = (child - 1) / 2;
+            } else {
+                return;
+            }
+        }
     }
 
     @Override
@@ -62,6 +73,23 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
     }
 
     private void heapDown() {
+        int parent = 0;
+        int child = 2 * parent + 1;
+
+        while (child < heap.size()) {
+
+            if ((child + 1 < heap.size()) && heap.get(child + 1).compareTo(heap.get(child)) > 0) {
+                child++;
+            }
+
+            if (heap.get(child).compareTo(heap.get(parent)) > 0) {
+                swap(child, parent);
+                parent = child;
+                child = 2 * parent + 1;
+            } else {
+                return;
+            }
+        }
     }
 
     @Override
