@@ -13,12 +13,7 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
 
     public Heap(T[] list) {
 
-        if (list == null) {
-            throw new IllegalArgumentException("List is equals to null");
-        }
-
-        T[] cloned = list.clone();
-        heap = new ArrayList<T>(List.of(cloned));
+        heap = new ArrayList<T>(List.of(list));
         build();
     }
 
@@ -104,13 +99,17 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
     private void heapify(int parent) {
         int child = 2 * parent + 1;
 
+        if (child > heap.size()) {
+            return;
+        }
+
         if ((child + 1 < heap.size()) && heap.get(child + 1).compareTo(heap.get(child)) > 0) {
             child++;
         }
 
         if (heap.get(child).compareTo(heap.get(parent)) > 0) {
             swap(child, parent);
-            heapify(parent);
+            heapify(child);
         }
     }
 
