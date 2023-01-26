@@ -13,7 +13,19 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
 
     public Heap(T[] list) {
 
-        heap = new ArrayList<T>(List.of(list));
+        if (list == null) {
+            throw new IllegalArgumentException("Array can not be equals to null");
+        }
+
+        heap = new ArrayList<T>();
+
+        for (int i = 0; i < list.length; i++) {
+            if (list[i] == null) {
+                throw new IllegalArgumentException("The array contains null");
+            }
+            heap.add(list[i]);
+        }
+
         build();
     }
 
