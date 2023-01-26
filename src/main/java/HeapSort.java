@@ -12,6 +12,10 @@ public class HeapSort<T extends Comparable<T>> implements HeapSortInterface<T> {
 
         heap = new Heap<T>(items);
 
+        for (int i = items.length - 1; i >= 0; i--) {
+            items[i] = heap.pop();
+        }
+
         return items;
     }
 }
