@@ -162,4 +162,100 @@ public class HeapSortTest {
         assertArrayEquals(expected, nums);
     }
 
+    @Test
+    public void tenThousandRandomDoubles() {
+        //given
+        doubleSorter = new HeapSort<Double>();
+
+        Double[] nums = new Double[10000];
+        Double[] expected = new Double[10000];
+        double rand;
+
+        for (int i = 0; i < 10000; i++) {
+            rand = random.nextDouble();
+            nums[i] = rand;
+            expected[i] = rand;
+        }
+
+        sort(expected);
+
+        //when
+        doubleSorter.sort(nums);
+
+        //then
+        assertArrayEquals(expected, nums);
+    }
+
+    @Test
+    public void oneHundredThousandRandomDoubles() {
+        //given
+        doubleSorter = new HeapSort<Double>();
+
+        Double[] nums = new Double[100000];
+        Double[] expected = new Double[100000];
+        double rand;
+
+        for (int i = 0; i < 100000; i++) {
+            rand = random.nextDouble();
+            nums[i] = rand;
+            expected[i] = rand;
+        }
+
+        sort(expected);
+
+        //when
+        doubleSorter.sort(nums);
+
+        //then
+        assertArrayEquals(expected, nums);
+    }
+
+    @Test
+    public void oneMillionRandomDoubles() {
+        //given
+        doubleSorter = new HeapSort<Double>();
+
+        Double[] nums = new Double[1000000];
+        Double[] expected = new Double[1000000];
+        double rand;
+
+        for (int i = 0; i < 1000000; i++) {
+            rand = random.nextDouble();
+            nums[i] = rand;
+            expected[i] = rand;
+        }
+
+        sort(expected);
+
+        //when
+        doubleSorter.sort(nums);
+
+        //then
+        assertArrayEquals(expected, nums);
+    }
+
+    @Test
+    public void tenMillionRandomDoubles() {
+        //given
+        doubleSorter = new HeapSort<Double>();
+
+        Double[] nums = new Double[10000000];
+        Double[] expected = new Double[10000000];
+        double rand;
+
+        for (int i = 0; i < 10000000; i++) {
+            rand = random.nextDouble();
+            nums[i] = rand;
+            expected[i] = rand;
+        }
+
+        sort(expected);
+
+        //when
+        doubleSorter.sort(nums);
+
+        //then
+        assertArrayEquals(expected, nums);
+    }
+
 }
