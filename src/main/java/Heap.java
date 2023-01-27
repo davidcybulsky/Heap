@@ -20,9 +20,11 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
         heap = new ArrayList<T>();
 
         for (int i = 0; i < list.length; i++) {
+
             if (list[i] == null) {
                 throw new IllegalArgumentException("The array contains null");
             }
+
             heap.add(list[i]);
         }
 
@@ -103,6 +105,7 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
 
     private void build() {
         int n = heap.size() - 1;
+
         for (int i = (n - 1) / 2; i >= 0; i--) {
             heapify(i);
         }
