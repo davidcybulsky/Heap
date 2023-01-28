@@ -114,7 +114,7 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
     private void heapify(int parent) {
         int child = 2 * parent + 1;
 
-        if (child > heap.size()) {
+        if (child >= heap.size()) {
             return;
         }
 
