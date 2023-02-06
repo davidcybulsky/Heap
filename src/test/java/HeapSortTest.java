@@ -1,4 +1,5 @@
 import Interfaces.HeapSortInterface;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -21,6 +22,7 @@ public class HeapSortTest {
     Random random = new Random(SEED);
     BufferedReader reader;
 
+    //Exceptions
     @Test(expected = IllegalArgumentException.class)
     public void arrayOfIntegersWithNulls() {
         //given
@@ -83,9 +85,196 @@ public class HeapSortTest {
         assert false;
     }
 
+    //Strings
+    @Test
+    public void arraySizeIsEqualsTo0String() {
+        //given
+        stringSorter = new HeapSort<String>();
+        String[] strings = new String[0];
+        String[] expected = new String[0];
+
+        //when
+        stringSorter.sort(strings);
+
+        //than
+        Assert.assertArrayEquals(expected, strings);
+    }
 
     @Test
-    public void sortFiveElementArray() {
+    public void sortAnArrayWithOneElementString() {
+        //given
+        stringSorter = new HeapSort<String>();
+        String[] strings = {"Java"};
+        String[] expected = {"Java"};
+
+        //when
+        stringSorter.sort(strings);
+
+        //than
+        assertArrayEquals(expected, strings);
+    }
+
+    @Test
+    public void sortTenThousandWords() throws IOException {
+        //given
+        stringSorter = new HeapSort<String>();
+        reader = new BufferedReader(new FileReader("10000words"));
+        String[] strings = new String[10000];
+        String[] expected = new String[10000];
+        String input = null;
+
+        for (int i = 0; i < 10000; i++) {
+            input = reader.readLine();
+            strings[i] = input;
+            expected[i] = input;
+        }
+
+        sort(expected);
+
+        //when
+        stringSorter.sort(strings);
+
+        //then
+        assertArrayEquals(expected, strings);
+    }
+
+    @Test
+    public void sortTenThousandReversedWords() throws IOException {
+        //given
+        stringSorter = new HeapSort<String>();
+        reader = new BufferedReader(new FileReader("10000words"));
+        String[] strings = new String[10000];
+        String[] expected = new String[10000];
+        String input = null;
+
+        for (int i = 9999; i >= 0; i--) {
+            input = reader.readLine();
+            strings[i] = input;
+            expected[i] = input;
+        }
+
+        sort(expected);
+
+        //when
+        stringSorter.sort(strings);
+
+        //then
+        assertArrayEquals(expected, strings);
+    }
+
+    @Test
+    public void loremIpsumSortFor1Line() throws IOException {
+        //given
+        stringSorter = new HeapSort<String>();
+        reader = new BufferedReader(new FileReader("LoremIpsum"));
+        String[] strings = new String[1];
+        String[] expected = new String[1];
+        String input = null;
+
+        for (int i = 0; i < 1; i++) {
+            input = reader.readLine();
+            strings[i] = input;
+            expected[i] = input;
+        }
+
+        sort(expected);
+
+        //when
+        stringSorter.sort(strings);
+
+        //then
+        assertArrayEquals(expected, strings);
+    }
+
+    @Test
+    public void loremIpsumSortFor10Lines() throws IOException {
+        //given
+        stringSorter = new HeapSort<String>();
+        reader = new BufferedReader(new FileReader("LoremIpsum"));
+        String[] strings = new String[10];
+        String[] expected = new String[10];
+        String input = null;
+
+        for (int i = 0; i < 10; i++) {
+            input = reader.readLine();
+            strings[i] = input;
+            expected[i] = input;
+        }
+
+        sort(expected);
+
+        //when
+        stringSorter.sort(strings);
+
+        //then
+        assertArrayEquals(expected, strings);
+    }
+
+    @Test
+    public void loremIpsumSortFor100Lines() throws IOException {
+        //given
+        stringSorter = new HeapSort<String>();
+        reader = new BufferedReader(new FileReader("LoremIpsum"));
+        String[] strings = new String[100];
+        String[] expected = new String[100];
+        String input = null;
+
+        for (int i = 0; i < 100; i++) {
+            input = reader.readLine();
+            strings[i] = input;
+            expected[i] = input;
+        }
+
+        sort(expected);
+
+        //when
+        stringSorter.sort(strings);
+
+        //then
+        assertArrayEquals(expected, strings);
+    }
+
+    @Test
+    public void loremIpsumSortFor200Lines() throws IOException {
+        //given
+        stringSorter = new HeapSort<String>();
+        reader = new BufferedReader(new FileReader("LoremIpsum"));
+        String[] strings = new String[200];
+        String[] expected = new String[200];
+        String input = null;
+
+        for (int i = 0; i < 200; i++) {
+            input = reader.readLine();
+            strings[i] = input;
+            expected[i] = input;
+        }
+
+        sort(expected);
+
+        //when
+        stringSorter.sort(strings);
+
+        //then
+        assertArrayEquals(expected, strings);
+    }
+
+    //Doubles
+    @Test
+    public void sortAnArrayWithOneElementDouble() {
+        //given
+        doubleSorter = new HeapSort<Double>();
+        Double[] doubles = {34.89};
+        Double[] expected = {34.89};
+
+        //when
+        doubleSorter.sort(doubles);
+
+        //than
+        assertArrayEquals(expected, doubles);
+    }
+
+    @Test
+    public void sortFiveElementArraySortedDoubles() {
 
         //given
         doubleSorter = new HeapSort<Double>();
@@ -106,7 +295,7 @@ public class HeapSortTest {
     }
 
     @Test
-    public void sortFiveElementArray2() {
+    public void sortFiveElementArrayReversedDoubles() {
 
         //given
         doubleSorter = new HeapSort<Double>();
@@ -149,54 +338,6 @@ public class HeapSortTest {
         //then
         assertArrayEquals(expected, nums);
 
-    }
-
-    @Test
-    public void sortTenThousandWords() throws IOException {
-        //given
-        stringSorter = new HeapSort<String>();
-        reader = new BufferedReader(new FileReader("10000words"));
-        String[] nums = new String[10000];
-        String[] expected = new String[10000];
-        String input = null;
-
-        for (int i = 0; i < 10000; i++) {
-            input = reader.readLine();
-            nums[i] = input;
-            expected[i] = input;
-        }
-
-        sort(expected);
-
-        //when
-        stringSorter.sort(nums);
-
-        //then
-        assertArrayEquals(expected, nums);
-    }
-
-    @Test
-    public void sortTenThousandReversedWords() throws IOException {
-        //given
-        stringSorter = new HeapSort<String>();
-        reader = new BufferedReader(new FileReader("10000words"));
-        String[] nums = new String[10000];
-        String[] expected = new String[10000];
-        String input = null;
-
-        for (int i = 9999; i >= 0; i--) {
-            input = reader.readLine();
-            nums[i] = input;
-            expected[i] = input;
-        }
-
-        sort(expected);
-
-        //when
-        stringSorter.sort(nums);
-
-        //then
-        assertArrayEquals(expected, nums);
     }
 
     @Test
@@ -293,6 +434,64 @@ public class HeapSortTest {
 
         //then
         assertArrayEquals(expected, nums);
+    }
+
+    //Integers
+    @Test
+    public void sortFiveElementArraySortedIntegers() {
+
+        //given
+        integerSorter = new HeapSort<Integer>();
+        Integer[] nums = new Integer[5];
+        Integer[] expected = new Integer[5];
+
+        for (int i = 0; i < 5; i++) {
+            nums[i] = i;
+            expected[i] = i;
+        }
+
+        //when
+        integerSorter.sort(nums);
+        sort(expected);
+
+        //then
+        assertArrayEquals(expected, nums);
+    }
+
+    @Test
+    public void sortFiveElementArrayReversedIntegers() {
+
+        //given
+        integerSorter = new HeapSort<Integer>();
+        Integer[] nums = new Integer[5];
+        Integer[] expected = new Integer[5];
+        int j = 0;
+
+        for (int i = 10; i > 5; i--) {
+            nums[j] = i;
+            expected[j++] = i;
+        }
+
+        //when
+        integerSorter.sort(nums);
+        sort(expected);
+
+        //then
+        assertArrayEquals(expected, nums);
+    }
+
+    @Test
+    public void sortAnArrayWithOneElementInteger() {
+        //given
+        integerSorter = new HeapSort<Integer>();
+        Integer[] ints = {34};
+        Integer[] expected = {34};
+
+        //when
+        integerSorter.sort(ints);
+
+        //than
+        assertArrayEquals(expected, ints);
     }
 
     @Test
@@ -414,5 +613,4 @@ public class HeapSortTest {
         //then
         assertArrayEquals(expected, nums);
     }
-
 }
