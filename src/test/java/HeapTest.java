@@ -16,6 +16,7 @@ public class HeapTest {
 
     Random random = new Random(SEED);
 
+    //Exceptions
     @Test(expected = IllegalArgumentException.class)
     public void putNullToTheHeap() {
         //given
@@ -41,6 +42,62 @@ public class HeapTest {
     }
 
     @Test
+    public void sizeTest() {
+        //given
+        integerHeap = new Heap<Integer>();
+
+        //when
+        integerHeap.put(1);
+        int afterFirstPut = integerHeap.getSize();
+        integerHeap.put(2);
+        int afterSecondPut = integerHeap.getSize();
+        integerHeap.put(3);
+        int afterThirdPut = integerHeap.getSize();
+        integerHeap.put(4);
+        int afterForthPut = integerHeap.getSize();
+        integerHeap.put(5);
+        int afterFifthPut = integerHeap.getSize();
+
+        //then
+        assertEquals(1, afterFirstPut);
+        assertEquals(2, afterSecondPut);
+        assertEquals(3, afterThirdPut);
+        assertEquals(4, afterForthPut);
+        assertEquals(5, afterFifthPut);
+    }
+
+    @Test
+    public void sizeTestWithPop() {
+        //given
+        integerHeap = new Heap<Integer>();
+
+        //when
+        integerHeap.put(1);
+        int afterFirstPut = integerHeap.getSize();
+        integerHeap.pop();
+        integerHeap.put(2);
+        int afterSecondPut = integerHeap.getSize();
+        integerHeap.pop();
+        integerHeap.put(3);
+        int afterThirdPut = integerHeap.getSize();
+        integerHeap.pop();
+        integerHeap.put(4);
+        int afterForthPut = integerHeap.getSize();
+        integerHeap.pop();
+        integerHeap.put(5);
+        int afterFifthPut = integerHeap.getSize();
+        integerHeap.pop();
+
+        //then
+        assertEquals(1, afterFirstPut);
+        assertEquals(1, afterSecondPut);
+        assertEquals(1, afterThirdPut);
+        assertEquals(1, afterForthPut);
+        assertEquals(1, afterFifthPut);
+        assertEquals(0, integerHeap.getSize());
+    }
+
+    @Test
     public void putOneIntegerToTheHeap() {
         //given
         integerHeap = new Heap<Integer>();
@@ -53,6 +110,7 @@ public class HeapTest {
 
         //then
         assertEquals(argument, poped);
+        assertEquals(0, integerHeap.getSize());
     }
 
     @Test
@@ -67,6 +125,7 @@ public class HeapTest {
 
         //then
         assertEquals(argument[0], poped);
+        assertEquals(0, integerHeap.getSize());
     }
 
     @Test
@@ -89,6 +148,7 @@ public class HeapTest {
         assertEquals(first, poped1);
         assertEquals(second, poped2);
         assertEquals(third, poped3);
+        assertEquals(0, integerHeap.getSize());
     }
 
     @Test
@@ -108,6 +168,7 @@ public class HeapTest {
         assertEquals(nums[0], poped1);
         assertEquals(nums[1], poped2);
         assertEquals(nums[2], poped3);
+        assertEquals(0, integerHeap.getSize());
     }
 
     @Test
@@ -136,6 +197,7 @@ public class HeapTest {
         assertEquals(third, poped3);
         assertEquals(forth, poped4);
         assertEquals(fifth, poped5);
+        assertEquals(0, integerHeap.getSize());
     }
 
     @Test
@@ -159,6 +221,7 @@ public class HeapTest {
         assertEquals(nums[3], poped3);
         assertEquals(nums[4], poped4);
         assertEquals(nums[0], poped5);
+        assertEquals(0, integerHeap.getSize());
     }
 
     @Test
@@ -184,6 +247,7 @@ public class HeapTest {
 
         //then
         assertArrayEquals(expected, result);
+        assertEquals(0, doubleHeap.getSize());
     }
 
     @Test
@@ -209,6 +273,7 @@ public class HeapTest {
 
         //then
         assertArrayEquals(expected, result);
+        assertEquals(0, doubleHeap.getSize());
     }
 
     @Test
@@ -234,6 +299,7 @@ public class HeapTest {
 
         //then
         assertArrayEquals(expected, result);
+        assertEquals(0, doubleHeap.getSize());
     }
 
     @Test
@@ -259,6 +325,7 @@ public class HeapTest {
 
         //then
         assertArrayEquals(expected, result);
+        assertEquals(0, doubleHeap.getSize());
     }
 
     @Test
@@ -284,6 +351,7 @@ public class HeapTest {
 
         //then
         assertArrayEquals(expected, result);
+        assertEquals(0, doubleHeap.getSize());
     }
 
 }
