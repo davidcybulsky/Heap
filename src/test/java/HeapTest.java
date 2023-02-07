@@ -98,6 +98,129 @@ public class HeapTest {
     }
 
     @Test
+    public void heapPutAndPopIntegers() {
+        //given
+        integerHeap = new Heap<>();
+        int i1 = 0;
+        int i2 = 1;
+        int i3 = 2;
+        int i4 = 4;
+
+        //when
+        integerHeap.put(i1);
+        integerHeap.put(i2);
+        integerHeap.put(i3);
+        int geti3 = integerHeap.pop();
+        integerHeap.put(i3);
+        int geti3second = integerHeap.pop();
+        int geti2 = integerHeap.pop();
+        integerHeap.put(i2);
+        int geti2second = integerHeap.pop();
+        int geti1 = integerHeap.pop();
+        integerHeap.put(i4);
+        integerHeap.put(i3);
+        integerHeap.put(i2);
+        integerHeap.put(i1);
+        int geti4 = integerHeap.pop();
+        int geti3third = integerHeap.pop();
+        int geti2third = integerHeap.pop();
+        int geti1second = integerHeap.pop();
+
+        //then
+        assertEquals(i3, geti3);
+        assertEquals(i3, geti3second);
+        assertEquals(i2, geti2);
+        assertEquals(i2, geti2second);
+        assertEquals(i1, geti1);
+        assertEquals(i4, geti4);
+        assertEquals(i3, geti3third);
+        assertEquals(i2, geti2third);
+        assertEquals(i1, geti1second);
+    }
+
+    @Test
+    public void heapPutAndPopStrings() {
+        //given
+        stringHeap = new Heap<>();
+        String s1 = "ala";
+        String s2 = "basia";
+        String s3 = "kasia";
+        String s4 = "zosia";
+
+        //when
+        stringHeap.put(s1);
+        stringHeap.put(s2);
+        stringHeap.put(s3);
+        String gets3 = stringHeap.pop();
+        stringHeap.put(s3);
+        String gets3second = stringHeap.pop();
+        String gets2 = stringHeap.pop();
+        stringHeap.put(s2);
+        String gets2second = stringHeap.pop();
+        String gets1 = stringHeap.pop();
+        stringHeap.put(s4);
+        stringHeap.put(s3);
+        stringHeap.put(s2);
+        stringHeap.put(s1);
+        String gets4 = stringHeap.pop();
+        String gets3third = stringHeap.pop();
+        String gets2third = stringHeap.pop();
+        String gets1second = stringHeap.pop();
+
+        //then
+        assertEquals(s3, gets3);
+        assertEquals(s3, gets3second);
+        assertEquals(s2, gets2);
+        assertEquals(s2, gets2second);
+        assertEquals(s1, gets1);
+        assertEquals(s4, gets4);
+        assertEquals(s3, gets3third);
+        assertEquals(s2, gets2third);
+        assertEquals(s1, gets1second);
+    }
+
+    @Test
+    public void heapPutAndPopDoubles() {
+        //given
+        doubleHeap = new Heap<>();
+        double d1 = 0.9;
+        double d2 = 2.1;
+        double d3 = 3.7;
+        double d4 = 6.9;
+
+        //when
+        doubleHeap.put(d1);
+        doubleHeap.put(d2);
+        doubleHeap.put(d3);
+        double getd3 = doubleHeap.pop();
+        doubleHeap.put(d3);
+        double getd3second = doubleHeap.pop();
+        double getd2 = doubleHeap.pop();
+        doubleHeap.put(d2);
+        double getd2second = doubleHeap.pop();
+        double getd1 = doubleHeap.pop();
+        doubleHeap.put(d4);
+        doubleHeap.put(d3);
+        doubleHeap.put(d2);
+        doubleHeap.put(d1);
+        double getd4 = doubleHeap.pop();
+        double getd3third = doubleHeap.pop();
+        double getd2third = doubleHeap.pop();
+        double getd1second = doubleHeap.pop();
+
+        //then
+        assertEquals(d3, getd3, 0);
+        assertEquals(d3, getd3second, 0);
+        assertEquals(d2, getd2, 0);
+        assertEquals(d2, getd2second, 0);
+        assertEquals(d1, getd1, 0);
+        assertEquals(d4, getd4, 0);
+        assertEquals(d3, getd3third, 0);
+        assertEquals(d2, getd2third, 0);
+        assertEquals(d1, getd1second, 0);
+    }
+
+    @Test
     public void putOneIntegerToTheHeap() {
         //given
         integerHeap = new Heap<Integer>();
